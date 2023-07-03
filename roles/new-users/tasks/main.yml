@@ -1,0 +1,8 @@
+---
+- name: Create user
+  user:
+    name: {{user_name}}
+    shell: /bin/bash
+    create_home: true
+  loop:
+    - {{user_name}}
