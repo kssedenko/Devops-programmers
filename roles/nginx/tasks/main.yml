@@ -1,0 +1,23 @@
+---
+- name: install nginx
+  apt:
+    pkg: nginx
+    state: latest
+
+- name: install nginx
+  apt:
+    pkg: nginx
+    state: latest
+
+- name: Copy index.html
+  copy:
+    src: index.html
+    dest: /usr/share/nginx/html/index.html
+    owner: root
+
+- name: Copy nginx.conf
+  copy:
+    src: nginx.conf 
+    dest: /etc/nginx/nginx.conf
+    owner: root
+  notify: restart nginx
