@@ -1,5 +1,5 @@
 ---
-- hosts: vps_grafana
+- hosts: vps_grafana, vps_zabbix
   roles:
     - { role: nginx, tags: nginx }
     
