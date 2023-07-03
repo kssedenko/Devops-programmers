@@ -12,7 +12,7 @@
 - name: Copy index.html
   copy:
     src: index.html
-    dest: /usr/share/nginx/html/index.html
+    dest: "{{root_dir}}"
     owner: root
 
 - name: Copy nginx.conf
