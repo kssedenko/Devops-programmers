@@ -1,5 +1,9 @@
-server {
-    location  /{
-        root "{{root_dir}}";
-    }
+events {
+
+}
+
+http {
+  server {
+    listen {{nginx_port}} default_server;
+  }
 }
