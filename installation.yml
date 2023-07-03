@@ -1,5 +1,5 @@
 ---
-- hosts: vps_zabbix
+- hosts: all
   tasks:
   - name: update apt cache
     apt:
