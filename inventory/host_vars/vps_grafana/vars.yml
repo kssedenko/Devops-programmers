@@ -1,3 +1,4 @@
 ---
 mysql_and_server_name: vps_grafana
 ipsec_ip: 91.149.241.155
+vps_grafana: 91.149.241.155

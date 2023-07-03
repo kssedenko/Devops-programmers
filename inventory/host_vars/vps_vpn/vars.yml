@@ -1,3 +1,4 @@
 ---
 mysql_and_server_name: vps_vpn
 ipsec_ip: 91.149.240.49
+vps_vpn: 91.149.240.49
