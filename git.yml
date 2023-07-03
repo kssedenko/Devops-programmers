@@ -1,6 +1,7 @@
 ---
 - hosts: vps_zabbix
   become: true
+  gather_facts: false
   tasks:
     - name: install git
       apt:
