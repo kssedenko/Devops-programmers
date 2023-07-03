@@ -1,4 +1,3 @@
 ---
 mysql_and_server_name: vps_zabbix
 ipsec_ip: 104.166.126.179
-vps_zabbix: 104.166.126.179
