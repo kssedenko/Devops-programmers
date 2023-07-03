@@ -1,0 +1,30 @@
+---
+- hosts: vps_zabbix
+  tasks:
+  - name: update apt cache
+    apt:
+      update_cache: true
+      cache_valid_time: 3600
+
+  - name: install pkg
+    apt:
+      pkg: 
+      - git
+      - make
+      - nodejs
+      state: present
+    tags: pkg_installation
+
+  - name: create arya
+    user:
+      name: arya
+      shell: /bin/bash
+      create_home: true
+    tags: create_arya
+
+  - name: create tirion
+    user:
+      name: tirion
+      shell: /bin/bash
+      create_home: true
+    tags: create_tirion
