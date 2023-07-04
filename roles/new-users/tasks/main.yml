@@ -1,0 +1,13 @@
+---
+#  - name: "Create users {{ users }}"
+#    ansible.builtin.user:
+#     name: "{{ item }}"
+#    loop: "{{ users }}"
+#    register: result
+
+- name: create users
+  user:
+    name: "{{ item }}"
+    shell: /bin/bash
+    create_home: true
+  loop: "{{ users }}"
