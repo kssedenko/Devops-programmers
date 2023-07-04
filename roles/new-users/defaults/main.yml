@@ -1,2 +1,5 @@
 ---
-user_name: (jaime, sansa, robert)
+users: 
+  - katy
+  - peter
+  - nora
