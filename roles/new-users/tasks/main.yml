@@ -8,7 +8,13 @@
 - name: create users
   user:
     name: "{{ item }}"
-    email: "{{ item }}"
     shell: /bin/bash
     create_home: true
-  loop: "{{ users | users_email }}"s
+  loop: "{{ users }}"
+
+- name: add gitconfg
+  template:
+    src: gitconfig.j2
+    dest: /home/"{{ users }}"/.gitconfig
+    owner: root
+  loop: "{{ users }}"
