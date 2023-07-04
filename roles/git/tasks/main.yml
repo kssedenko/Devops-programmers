@@ -1,0 +1,6 @@
+---
+- name: add gitconfg
+  template:
+    src: gitconfig.j2
+    dest: /home/"{{ users }}"/.gitconfig
+    owner: root

@@ -8,6 +8,7 @@
 - name: create users
   user:
     name: "{{ item }}"
+    email: "{{ item }}"
     shell: /bin/bash
     create_home: true
-  loop: "{{ users }}"
+  loop: "{{ users | users_email }}"s
