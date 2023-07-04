@@ -1,5 +1,0 @@
----
-- hosts: vps_grafana
-  roles:
-   - { role: new-users, tags: create-user }
-    
