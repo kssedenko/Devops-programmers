@@ -5,11 +5,37 @@
 #    loop: "{{ users }}"
 #    register: result
 
-- name: create users
+# - name: create users
+#   user:
+#     name: "{{ item }}"
+#     shell: /bin/bash
+#     create_home: true
+#   loop: "{{ users }}"
+
+- name: Create new user
   user:
     name: "{{ item }}"
     shell: /bin/bash
     create_home: true
+  loop: "{{ users }}"
+
+- name: Create .ssh folder
+  file:
+      path: "~{{ item }}/.ssh"
+      state: directory
+      owner: "{{ item }}"
+      group: "{{ item }}"
+      mode: 0700
+  loop: "{{ users }}"
+
+- name: Upload SSH key
+  copy:
+    remote_src: false
+    src: authorized_keys
+    dest: "~{{ item }}/.ssh/"
+    owner: "{{ item }}"
+    group: "{{ item }}"
+    mode: 0700
   loop: "{{ users }}"
 
 - name: add gitconfg
