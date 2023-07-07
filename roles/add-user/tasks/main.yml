@@ -32,26 +32,10 @@
   copy:
     remote_src: false
     src: "{{ item }}"
-    dest: "~{{ item }}/.ssh/"
+    dest: "~{{ item }}/.ssh/authorized_keys"
     owner: "{{ item }}"
     group: "{{ item }}"
     mode: 0700
-  loop: "{{ users }}"
-
-- name: Copy new ssh file to the old
-  copy:
-     remote_src: true
-     owner: root
-     group: root
-     src: "~{{ item }}/.ssh/{{ item }}"
-     dest: "~{{ item }}/.ssh/authorized_keys"
-     mode: '0755'
-  loop: "{{ users }}"
-
-- name: Remove new ssh file
-  file:
-     path: "~{{ item }}/.ssh/{{ item }}"
-     state: absent
   loop: "{{ users }}"
 
 - name: add gitconfg
