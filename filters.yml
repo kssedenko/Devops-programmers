@@ -1,0 +1,6 @@
+---
+- hosts: all
+  gather_facts: no
+  vars:
+  tasks:
+    - ansible.builtin.debug: msg={{ server_name | upper }}
