@@ -1,5 +1,8 @@
 ---
-- hosts: vps_grafana
+- hosts: all
   roles:
-   - { role: add-user, tags: add-user }
+  #  - { role: add-user, tags: add-user }
+  #  - { role: nginx, tags: nginx }
+   - { role: filters, tags: filters }
+    
     
