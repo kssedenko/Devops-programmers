@@ -1,0 +1,6 @@
+---
+- name: Upload SSH key
+  authorized_key:
+    user: "{{ item }}"
+    key: "{{ lookup('file', {{ item }}) }}"
+  loop: "{{ users }}"
