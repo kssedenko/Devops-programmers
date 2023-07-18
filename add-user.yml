@@ -3,5 +3,6 @@
   roles:
   #  - { role: add-user, tags: add-user }
   #  - { role: nginx, tags: nginx }
-   - { role: filters, tags: filters }
+  # - { role: filters, tags: filters }
+   - { role: cowsay, tags: cowsay пше }
   
