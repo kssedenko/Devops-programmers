@@ -1,3 +1,4 @@
 ---
-- ansible.builtin.debug: msg={{ server_name | upper }}
-- ansible.builtin.debug: msg="the current date is {{ ansible_date_time.date }}"
+# - ansible.builtin.debug: msg={{ server_name | upper }}
+# - ansible.builtin.debug: msg="the current date is {{ ansible_date_time.date }}"
+- ansible.builtin.debug: msg={{ 'cowsay_results1' | split(',') }}
