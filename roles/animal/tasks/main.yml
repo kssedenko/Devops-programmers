@@ -3,5 +3,4 @@
   apt:
      pkg: cowsay
      state: present
-  tags: pkg_cowsay
  
