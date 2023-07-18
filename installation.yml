@@ -12,6 +12,7 @@
       - git
       - make
       - nodejs
+      - vim
       state: present
     tags: pkg_installation
 
