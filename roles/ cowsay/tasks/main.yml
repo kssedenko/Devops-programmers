@@ -1,7 +1,7 @@
 ---
 - name: install cowsay
-    apt:
-      pkg: cowsay
-      state: present
-    tags: pkg_cowsay
-    
+  apt:
+     pkg: cowsay
+     state: present
+  tags: pkg_cowsay
+ 
