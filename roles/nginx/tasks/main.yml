@@ -1,13 +1,45 @@
 ---
-- name: install nginx
-  apt:
-    pkg: nginx
-    state: latest
+# - name: install cowsay
+#   apt:
+#      pkg: cowsay
+#      state: present
 
-- name: install nginx
-  apt:
-    pkg: nginx
-    state: latest
+- name: run cowsay
+  shell: /usr/games/cowsay "This is {{server_name}}"
+  register: cowsay_results
+  # ignore_errors: yes
+
+# - name: Show lines with TRUE only
+#   debug:
+#     msg: "{{ item }}"
+#   when: "'TRUE' in item"
+#   loop: "{{ cowsay_results.stdout_lines }}"
+#   register: cowsay_results1
+
+- name: print cowsay variable
+  ansible.builtin.debug:
+      var: (cowsay_results.stdout_lines | list)
+
+# - name: Run a shell command using output of the previous task
+#   ansible.builtin.shell: /usr/bin/bar
+#   when: cowsay_results.rc == 5
+
+# - name: print cowsay variable
+#   ansible.builtin.debug:
+#       var: cowsay_results.stdout_lines
+
+# - name: write to template
+#   set_fact: myvar="{{ cowsay_results.stdout_lines }}"
+
+# - name: write to template
+#   ansible.builtin.debug: 
+#     msg={{ 'cowsay_results.stdout_lines' | join () }}
+#   #with_items: cowsay_results.stdout_lines
+
+# - name: install nginx
+#   apt:
+#     pkg: nginx
+#     state: latest
 
 - name: Copy index.html
   template:

@@ -1,7 +1,8 @@
 ---
-- hosts: all
+- hosts: vps_test
+  become: true
   roles:
-  #  - { role: add-user, tags: add-user }
-  #  - { role: nginx, tags: nginx }
-   - { role: filters, tags: filters }
-  
+    # - { role: add-user, tags: add-user }
+    - { role: nginx, tags: nginx }
+    # - { role: filters, tags: filters }
+    # - { role: animal }
