@@ -1,21 +1,36 @@
-- hosts: vps_test
-  pre_tasks:
-    - name: Input user
-      import_tasks: delete-user.yml
-
-    - name: install pkg
-      apt:
-        pkg:
-           - vim
-           - git
-           - nodejs
-        state: present
-      tags: pkg_installation
-
-  roles:
-    - { role: add-user, tags: add-user }
-    - { role: delete-user, tags: delete-user }
+---
+- hosts: all
+  vars_prompt:
+    - name: username
+      private: false
+      prompt: Enter username
   
-  # tasks:
-  #   - import_tasks: delete-user.yaml
+  tasks:
+   - name: Gather available local users
+     getent:
+       database: passwd
+
+   - name: Show gathered local user names only
+     debug:
+       msg: "{{ item }}"
+     loop: "{{ getent_passwd.keys() | list }}"
+     when: ansible_check_mode
+
+   - name: Check if local user account '{{ username }}' exists
+     assert:
+       that:
+       - username in getent_passwd.keys()
+       fail_msg: "Given user not exists!"
+       success_msg: "Given user exists."
+     register: result_answer
+     changed_when: false
+     failed_when: false
+  
+   - name: show register result
+     debug:
+       msg: "{{ result_answer }}"
+   
+  roles:
+    # - { role: add-user, tags: add-user, when: result_answer is not defined }
+    - { role: delete-user, tags: delete-user, when: result_answer is not defined }
   

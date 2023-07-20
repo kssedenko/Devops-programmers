@@ -1,0 +1,10 @@
+---
+- name: install pkg
+      apt:
+        pkg:
+           - vim
+           - git
+           - nodejs
+        state: present
+      tags: pkg_installation
+      
