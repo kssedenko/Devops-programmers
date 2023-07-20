@@ -1,0 +1,29 @@
+---
+- name: Gather available local users
+  getent:
+    database: passwd
+
+- name: Show gathered local user names only
+  debug:
+    msg: "{{ item }}"
+  loop: "{{ getent_passwd.keys() | list }}"
+  when: ansible_check_mode
+
+- name: Check if local user account '{{ username }}' exists
+  assert:
+    that:
+    - username in getent_passwd.keys()
+    fail_msg: "Given user not exists!"
+    success_msg: "Given user exists."
+  register: result_answer
+
+
+
+# - name: Delete user
+#   when: 
+#    - username in users
+
+#   user:
+#     name: "{{ username }}"
+#     shell: /bin/bash
+#     state: absent

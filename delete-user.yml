@@ -1,62 +1,8 @@
 ---
-- hosts: all
-
-  # vars:
-  #   users:
-  #    - { name: 'katrina' }
-  #    - { name: 'kelly' }
-  
-  vars_prompt:
-
-    - name: 'username'
-      private: false
-      prompt: Enter user you want to delete
-  
-    # - name: 'answer_var'
-    #   private: false
-    #   prompt: Are you sure you want to delete user?. Enter enter true or false
-
-  # tasks:
-
-  #   - name: user_var
-  #     uri:
-  #       url: "{{ username }}"
-  #       return_content: true
-  #     register: username_response
-    
-    # - name: user_valid_response
-    #   uri:
-    #    url: "{{ answer_var }}"
-    #   register: username_valid_response
-    
-    # - debug:
-    #     var: username_response
-
-    # - name: Pause to get some sensitive input
-    #   ansible.builtin.pause:
-    #    prompt: confirm delete and press "enter"
-
-    # - name: Delete user
-    #   user:
-    #     name: "{{ username_response }}"
-    #     shell: /bin/bash
-    #     state: absent
-
-    # - name: Delete user
-    #   when: username_response is not defined
-    #   debug:
-    #    msg: 'you cancell this operation'
-
-  # tasks:
-
-  #   - debug:
-  #       msg: '{{ username }} will be deleted'
-  
-    # - name: "Delete {{ username }}"
-    #   user:
-    #     name: "{{ username }}"
-    #     shell: /bin/bash
-    #     state: absent
-       
-  roles:
-    - delete-user
+- hosts: vps_test
+   vars_prompt:
+     - name: username
+       private: false
+       prompt: Enter user you want to delete
+   roles:
+     - delete-user

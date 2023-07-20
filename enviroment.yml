@@ -1,0 +1,21 @@
+- hosts: vps_test
+  pre_tasks:
+    - name: Input user
+      import_tasks: delete-user.yml
+
+    - name: install pkg
+      apt:
+        pkg:
+           - vim
+           - git
+           - nodejs
+        state: present
+      tags: pkg_installation
+
+  roles:
+    - { role: add-user, tags: add-user }
+    - { role: delete-user, tags: delete-user }
+  
+  # tasks:
+  #   - import_tasks: delete-user.yaml
+  
