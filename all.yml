@@ -1,0 +1,6 @@
+---
+- name: User
+  import_playbook: add-user.yml
+
+- name: Pakages
+  import_playbook: installation.yml
