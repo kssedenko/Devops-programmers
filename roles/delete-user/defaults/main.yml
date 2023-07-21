@@ -1,7 +1,4 @@
 ---
-mysql_and_server_name: vps_test
-ipsec_ip: 91.149.240.129
-
 users:
   - katrina
   # - tommy

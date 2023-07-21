@@ -9,3 +9,12 @@ vps_grafana: 91.149.241.155
 vps_zabbix: 104.166.126.179
 vps_vpn: 91.149.240.49
 vps_test: 91.149.240.129
+
+users:
+  - katrina
+  # - tommy
+  # - kara
+  # - jeff
+  # - mike
+  # - lara
+  - kelly

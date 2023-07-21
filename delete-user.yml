@@ -1,0 +1,8 @@
+---
+- hosts: all
+  vars_prompt:
+    - name: username
+      private: false
+      prompt: Enter user you want to delete
+  roles:
+     - delete-user

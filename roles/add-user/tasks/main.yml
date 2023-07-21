@@ -1,17 +1,4 @@
 ---
-#  - name: "Create users {{ users }}"
-#    ansible.builtin.user:
-#     name: "{{ item }}"
-#    loop: "{{ users }}"
-#    register: result
-
-# - name: create users
-#   user:
-#     name: "{{ item }}"
-#     shell: /bin/bash
-#     create_home: true
-#   loop: "{{ users }}"
-
 - name: Create new user
   user:
     name: "{{ item }}"
@@ -37,6 +24,7 @@
     group: "{{ item }}"
     mode: 0700
   loop: "{{ users }}"
+  ignore_errors: yes
 
 - name: add gitconfg
   template:
@@ -44,3 +32,6 @@
     dest: "/home/{{ item }}/.gitconfig"
     owner: root
   loop: "{{ users }}"
+
+# - name: finish installation
+#   meta: end_play
