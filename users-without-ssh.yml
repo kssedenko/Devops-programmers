@@ -1,0 +1,9 @@
+---
+- hosts: all
+  vars_prompt:
+    - name: username
+      private: false
+      prompt: Enter username
+  roles:
+    - create-user
+  
