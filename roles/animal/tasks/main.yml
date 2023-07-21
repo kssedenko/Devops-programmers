@@ -1,0 +1,14 @@
+---
+- name: install cowsay
+  apt:
+     pkg: cowsay
+     state: present
+ 
+- name: run cowsay
+  ansible.builtin.shell: cowsay "This is {{server_name}}"
+  register: cowsay_results
+  ignore_errors: yes
+
+- name: print cowsay variable
+  ansible.builtin.debug:
+      var: cowsay_results

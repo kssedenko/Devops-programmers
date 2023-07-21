@@ -8,4 +8,5 @@
     - ansible.builtin.debug: msg={{ path | basename }} #Returns the last name component of a path, what is left in the string that is not ‘dirname’
     - ansible.builtin.debug: msg={{ path | dirname }}
     - ansible.builtin.debug: msg={{ "~/zabbix" | expanduser }} #Translates ~ in a path to the proper user’s home directory
+    - ansible.builtin.debug: msg={{ 'cowsay_results' | split(',') }}
     
