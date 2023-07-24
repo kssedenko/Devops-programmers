@@ -30,15 +30,6 @@
    shell: /bin/bash
    create_home: true
    home: "/home/{{ username }}"
-
-- name: Create .ssh folder
-  # when: new_user is defined
-  file:
-      path: "~{{ username }}/.ssh"
-      state: directory
-      owner: "{{ username }}"
-      group: "{{ username }}"
-      mode: 0700
   register: new_user
 
 - name: Delete new user
@@ -48,6 +39,15 @@
     shell: /bin/bash
     state: absent
   register: delete_user
+
+- name: Create .ssh folder
+  when: new_user is defined
+  file:
+      path: "~{{ username }}/.ssh"
+      state: directory
+      owner: "{{ username }}"
+      group: "{{ username }}"
+      mode: 0700
 
 - name: install git
   when: new_user is defined
