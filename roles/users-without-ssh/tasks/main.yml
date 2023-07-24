@@ -30,9 +30,16 @@
    shell: /bin/bash
    create_home: true
    home: "/home/{{ username }}"
+
+- name: Create .ssh folder
+  # when: new_user is defined
+  file:
+      path: "~{{ username }}/.ssh"
+      state: directory
+      owner: "{{ username }}"
+      group: "{{ username }}"
+      mode: 0700
   register: new_user
-
-
 
 - name: Delete new user
   when: result_answer.msg=="Given user exists."
@@ -41,3 +48,16 @@
     shell: /bin/bash
     state: absent
   register: delete_user
+
+- name: install git
+  when: new_user is defined
+  apt:
+    name: git
+    state: present
+
+- name: add gitconfg
+  when: new_user is defined
+  template:
+    src: gitconfig.j2
+    dest: "/home/{{ username }}/.gitconfig"
+    owner: "{{ username }}"

@@ -32,6 +32,3 @@
     dest: "/home/{{ item }}/.gitconfig"
     owner: root
   loop: "{{ users }}"
-
-# - name: finish installation
-#   meta: end_play

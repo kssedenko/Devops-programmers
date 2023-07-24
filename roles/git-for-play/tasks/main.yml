@@ -8,11 +8,21 @@
     name: git
     state: present
 
-- name: Create /.gitconfig file
+# - name: ensures {{  new_user }}/.gitconfig exists
+#   file: 
+#     path: "/home/{{ new_user }}/.gitconfig"
+#     state: directory
+
+- name: Add app directory
+  file:
+    path: "/home/{{ new_user }}/.gitconfig"
+    state: directory
+    mode: '0700'
+    owner: "{{ new_user }}"
+    group: "{{ new_user }}"
+
+- name: add gitconfg
   template:
-    remote_src: true
     src: gitconfig.j2
     dest: "/home/{{ new_user }}/.gitconfig"
-    mode: '0600'
-    owner: root
-    unsafe_writes: true
+    owner: "{{ new_user }}"
