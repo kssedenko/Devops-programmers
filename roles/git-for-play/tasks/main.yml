@@ -10,12 +10,9 @@
 
 - name: Create /.gitconfig file
   template:
-    remote_src: false
-    src: gitconfig-new.j2
+    remote_src: true
+    src: gitconfig.j2
     dest: "/home/{{ new_user }}/.gitconfig"
     mode: '0600'
     owner: root
     unsafe_writes: true
-
-# - name: finish installation
-#   meta: end_play

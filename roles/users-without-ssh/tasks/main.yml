@@ -29,7 +29,7 @@
    name: "{{ username }}"
    shell: /bin/bash
    create_home: true
-   home: /home/"{{ username }}"
+   home: "/home/{{ username }}"
   register: new_user
 
 
