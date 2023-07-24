@@ -29,7 +29,10 @@
    name: "{{ username }}"
    shell: /bin/bash
    create_home: true
+   home: /home/"{{ username }}"
   register: new_user
+
+
 
 - name: Delete new user
   when: result_answer.msg=="Given user exists."

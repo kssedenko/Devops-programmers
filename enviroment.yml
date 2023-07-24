@@ -2,11 +2,11 @@
 - name: users operations
   import_playbook: users-without-ssh.yml
 
-- name: pkg
-  import_playbook: pkg.yml
-  tags: pkg
-
 - name: git pack installation
   import_playbook: git-for-play.yml
   tags: git_for_play
+  
+- name: pkg
+  import_playbook: pkg.yml
+  tags: pkg
   
