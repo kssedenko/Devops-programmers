@@ -1,0 +1,10 @@
+---
+- hosts: vps_test
+  tasks:
+    - name: Gather facts
+      gather_facts:
+        parallel: true
+
+- hosts: vps_test
+  roles:
+    - { role: pkg, tags: pkg }

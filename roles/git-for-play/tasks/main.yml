@@ -1,0 +1,29 @@
+---
+- name: install git
+  apt:
+    name: git
+    state: present
+
+# - name: "Create folder /home/{{ new_user }}"
+#   file:
+#       path: "/home/{{new_user}}"
+#       state: directory
+#       owner: "{{ new_user }}"
+#       group: "{{ new_user }}"
+#       mode: 0700
+
+# - name: add gitconfg
+#   template:
+#     src: gitconfig-new.j2
+#     dest: "/home/{{ new_user }}/.gitconfig"
+#     owner: root
+
+- name: Create /.gitconfig file
+  template:
+    src: gitconfig-new.j2
+    dest: "~/{{ new_user }}/.gitconfig"
+    mode: '0600'
+    owner: root
+
+# - name: finish installation
+#   meta: end_play

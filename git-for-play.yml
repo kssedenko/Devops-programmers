@@ -1,0 +1,6 @@
+---
+- hosts: vps_test
+  become: true
+  roles:
+   - { role: git-for-play, tags: git_for_play }
+   
